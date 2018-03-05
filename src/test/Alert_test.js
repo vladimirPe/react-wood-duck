@@ -17,8 +17,8 @@ describe('Alert', () => {
     faIcon: 'fa-info-circle icon',
     alertCross: true,
   };
-  const comp = shallow(<Alert />);
-  comp.setProps(alert);
+  const component = shallow(<Alert />);
+  component.setProps(alert);
 
   it('has a className', () => {
     expect(wrapper.hasClass('row')).toBe(true);
@@ -46,8 +46,8 @@ describe('Alert', () => {
         } else return alertData.alertMessage;
       },
     };
-    const comp = shallow(<Alert />);
-    comp.setProps(alertData);
+    const component = shallow(<Alert />);
+    component.setProps(alertData);
     it('displays array', () => {
       expect(alertData.messageData().length).toEqual(2);
     });
@@ -55,48 +55,48 @@ describe('Alert', () => {
 
   it('has a props', () => {
     expect(
-      comp
+      component
         .find('div')
         .at(1)
         .props().className
     ).toEqual('col-xs-12');
 
     expect(
-      comp
+      component
         .find('div')
         .at(2)
         .props().className
     ).toEqual('alert-message ' + alert.alertClassName + '-message');
 
     expect(
-      comp
+      component
         .find('div')
         .at(3)
         .props().className
     ).toEqual('alert-icon');
 
     expect(
-      comp
+      component
         .find('div')
         .at(4)
         .props().className
     ).toEqual('alert-text');
 
     expect(
-      comp
+      component
         .find('i')
         .at(0)
         .props().className
     ).toEqual('fa ' + alert.faIcon);
 
     expect(
-      comp
+      component
         .find('div')
         .at(5)
         .props().className
     ).toEqual('alert-cross');
     expect(
-      comp
+      component
         .find('i')
         .at(1)
         .props().className

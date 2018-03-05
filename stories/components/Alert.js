@@ -40,7 +40,7 @@ class Alerts extends React.Component {
       this.state.reasons.push(item.activation_reason_code);
     });
   }
-  componentDidMount() {
+  componentWillMount() {
     this.getAlertMessages();
   }
   render() {
