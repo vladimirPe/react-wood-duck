@@ -96,7 +96,7 @@
     "bootstrap": "^3.3.7",
     "classnames": "^2.2.5",
     "copyfiles": "^1.2.0",
-    "moment": "^2.18.1",
+    "moment": "2.21.0",
     "node-sass": "^4.5.3",
     "prettier": "^1.7.4",
     "prop-types": "^15.6.0",
