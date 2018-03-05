@@ -33,7 +33,7 @@ const Alert = props => {
 Alert.propTypes = {
   alertClassName: PropTypes.string,
   faIcon: PropTypes.string,
-  alertMessage: PropTypes.any,
+  alertMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.Array]),
   alertCross: PropTypes.bool,
 };
 
