@@ -10,75 +10,36 @@ const longMessage = `Error it enim ad minim veniam, quis nostrud exercitation ul
   reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
   Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
   deserunt mollit anim id est laborum.`;
+
 const CenterDecorator = storyFn => <div className="container">{storyFn()}</div>;
 
 class Alerts extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      reasons: [],
-      sampleList: [
-        {
-          activation_date: '1-4-2002',
-          activation_reason_code: 'Handguns in house',
-        },
-        {
-          activation_date: '4-5-2003',
-          activation_reason_code:
-            'Aggressive dog on premises, yard not fenced ',
-        },
-        {
-          activation_date: '5-6-2018',
-          activation_reason_code: 'Allergies - Severe peanut, needs epi pen',
-        },
-      ],
-    };
-    this.getAlertMessages = this.getAlertMessages.bind(this);
-  }
-  getAlertMessages() {
-    this.state.sampleList.map(item => {
-      this.state.reasons.push(item.activation_reason_code);
-    });
-  }
-  componentWillMount() {
-    this.getAlertMessages();
-  }
   render() {
     return (
       <div>
         <Alert
           alertClassName="error"
-          alertMessage="Error Message"
           faIcon="fa-exclamation-triangle"
           alertCross={false}
-        />
-        <Alert
-          alertClassName="warning"
-          alertMessage="Warning Message"
-          faIcon="fa-warning"
-        />
-        <Alert
-          alertClassName="info"
-          alertMessage="Information Message."
-          faIcon="fa-info-circle"
-        />
-        <Alert
-          alertClassName="success"
-          alertMessage="Success Message."
-          faIcon="fa-check-circle"
-        />
+        >
+          {'Error Message'}
+        </Alert>
+        <Alert alertClassName="warning" faIcon="fa-warning">
+          {'Warning Message'}
+        </Alert>
+        <Alert alertClassName="info" faIcon="fa-info-circle">
+          {'Information Message'}
+        </Alert>
+        <Alert alertClassName="success" faIcon="fa-check-circle">
+          {'Success Message'}
+        </Alert>
         <Alert
           alertClassName="error"
-          alertMessage={longMessage}
           faIcon="fa-exclamation-triangle"
           alertCross={false}
-        />
-        <Alert
-          alertClassName="warning"
-          faIcon="fa-warning"
-          alertMessage={this.state.reasons}
-          alertCross={false}
-        />
+        >
+          {longMessage}
+        </Alert>
       </div>
     );
   }
