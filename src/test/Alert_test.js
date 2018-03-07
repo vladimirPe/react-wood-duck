@@ -1,6 +1,6 @@
 import React from 'react';
 import Alert from '../Alert.js';
-import { mount, shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import './EnzymeSetup';
 
 describe('Alert', () => {
@@ -11,66 +11,62 @@ describe('Alert', () => {
   const alert = {
     alertClassName: 'Success!',
     faIcon: 'fa-info-circle icon',
-    alertMessage: 'Error! you have to check back again!',
     alertCross: true,
+    children: 'children',
   };
-  const comp = mount(<Alert />);
-  comp.setProps(alert);
+  const component = mount(<Alert />);
+  component.setProps(alert);
 
   it('has a className', () => {
     expect(wrapper.hasClass('row')).toBe(true);
   });
+
   it('has a props', () => {
     expect(
-      comp
+      component
         .find('div')
         .at(1)
         .props().className
     ).toEqual('col-xs-12');
 
     expect(
-      comp
+      component
         .find('div')
         .at(2)
         .props().className
     ).toEqual('alert-message ' + alert.alertClassName + '-message');
 
     expect(
-      comp
+      component
         .find('div')
         .at(3)
         .props().className
     ).toEqual('alert-icon');
 
     expect(
-      comp
+      component
         .find('div')
         .at(4)
         .props().className
     ).toEqual('alert-text');
 
-    expect(
-      comp
-        .find('div')
-        .at(4)
-        .props().children
-    ).toEqual(alert.alertMessage);
+    expect(component.props().children).toEqual(alert.children);
 
     expect(
-      comp
+      component
         .find('i')
         .at(0)
         .props().className
     ).toEqual('fa ' + alert.faIcon);
 
     expect(
-      comp
+      component
         .find('div')
         .at(5)
         .props().className
     ).toEqual('alert-cross');
     expect(
-      comp
+      component
         .find('i')
         .at(1)
         .props().className
