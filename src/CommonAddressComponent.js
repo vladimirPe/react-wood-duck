@@ -123,5 +123,5 @@ CommonAddressFields.defaultProps = {
   addressType: '',
   placeholder: '',
   suggestions: [],
-  label: ''
+  label: '',
 };
