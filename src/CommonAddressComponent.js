@@ -108,6 +108,7 @@ CommonAddressFields.propTypes = {
   addressType: PropTypes.string,
   placeholder: PropTypes.string,
   id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
   addressTitle: PropTypes.string.isRequired,
   suggestions: PropTypes.array.isRequired,
   addressFields: PropTypes.object.isRequired,
