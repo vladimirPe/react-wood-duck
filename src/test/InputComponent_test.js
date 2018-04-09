@@ -40,7 +40,7 @@ describe('Input component', () => {
         .find('div')
         .at(1)
         .props().className
-    ).toEqual(input.gridClassName + 'has-error');
+    ).toEqual(input.gridClassName + ' has-error');
     expect(
       wrapper
         .find('label')

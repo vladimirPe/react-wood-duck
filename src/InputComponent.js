@@ -15,9 +15,7 @@ const InputComponent = props => {
     <div className="form-group">
       <div
         className={`${props.gridClassName}${
-          props.serverError || props.validationError || props.required
-            ? 'has-error'
-            : ''
+          errorMessage !== '' ? ' has-error' : ''
         }`}
       >
         <label className={props.labelClassName} htmlFor={props.id}>
