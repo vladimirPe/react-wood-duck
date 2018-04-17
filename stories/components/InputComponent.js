@@ -39,6 +39,7 @@ const InputComponentStory = withInfo(
       gridClassName="col-md-12 col-sm-12 col-xs-12"
       labelClassName="Full Name"
       placeholder="Enter Full Name"
+      maxLength={10}
     />
     <InputComponent
       label="Full Name"

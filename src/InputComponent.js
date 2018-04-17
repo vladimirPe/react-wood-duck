@@ -28,6 +28,7 @@ const InputComponent = props => {
             value={props.value}
             onChange={props.onChange}
             disabled={props.disabled}
+            maxLength={props.maxLength}
           />
         </label>
         {errorMessage !== '' ? (
@@ -59,5 +60,6 @@ InputComponent.propTypes = {
   value: PropTypes.any,
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
+  maxLength: PropTypes.number,
 };
 export default InputComponent;
