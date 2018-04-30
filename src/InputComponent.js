@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {sanitizeValue} from './common/inputField';
+import { sanitizeValue } from './common/inputField';
 const InputComponent = props => {
   let errorMessage = '';
   if (props.required || props.validationError) {

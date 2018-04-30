@@ -5,8 +5,8 @@ import React from 'react';
 const sanitizeValue = (string, allowRegex) => {
   const characterArray = string.split('');
   return characterArray
-  .filter(character => character.match(allowRegex))
-  .join('');
+    .filter(character => character.match(allowRegex))
+    .join('');
 };
 
 const InputField = ({
@@ -82,8 +82,5 @@ InputField.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
-export {
-  sanitizeValue,
-};
+export { sanitizeValue };
 export default InputField;
-
