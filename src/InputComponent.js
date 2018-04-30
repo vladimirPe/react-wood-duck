@@ -1,30 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { sanitizeValue } from './common/inputField';
+
+const extractErrorMessage = props => {
+  let errMessage = '';
+  if (props.required || props.validationError) {
+    errMessage = props.validationErrorMessage;
+  }
+
+  if (props.serverError) {
+    errMessage = props.serverErrorMessage;
+  }
+  return errMessage;
+};
+
+const onChangeWrapper = (event, props) => {
+  if (event.target.value && props.allowCharacters) {
+    event.target.value = sanitizeValue(
+      event.target.value,
+      props.allowCharacters
+    );
+  }
+  props.onChange(event);
+};
+
 const InputComponent = props => {
-
-  const errorMessage = () => {
-    let errMessage = '';
-    if (props.required || props.validationError) {
-      errMessage = props.validationErrorMessage;
-    }
-
-    if (props.serverError) {
-      errMessage = props.serverErrorMessage;
-    }
-    return errMessage;
-  };
-
-  const onChangeWrapper = event => {
-    if (event.target.value && props.allowCharacters) {
-      event.target.value = sanitizeValue(
-        event.target.value,
-        props.allowCharacters
-      );
-    }
-    props.onChange(event);
-  };
-
+  const errorMessage = extractErrorMessage(props);
   return (
     <div className="form-group">
       <div
@@ -40,7 +41,7 @@ const InputComponent = props => {
             type={props.type}
             placeholder={props.placeholder}
             value={props.value}
-            onChange={onChangeWrapper}
+            onChange={event => onChangeWrapper(event, props)}
             disabled={props.disabled}
             maxLength={props.maxLength}
           />
