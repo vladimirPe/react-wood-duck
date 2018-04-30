@@ -15,7 +15,7 @@ describe('Input component', () => {
     fieldClassName: 'field class name',
     placeholder: 'string ',
     value: 'enter the name',
-    onChange: onChange
+    onChange: onChange,
   };
   const instance = wrapper.instance();
   wrapper.setProps(input);

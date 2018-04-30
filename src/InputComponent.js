@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import {sanitizeValue} from './common/inputField';
 const InputComponent = props => {
   let errorMessage = '';
   if (props.required || props.validationError) {
@@ -11,16 +11,12 @@ const InputComponent = props => {
     errorMessage = props.serverErrorMessage;
   }
 
-  const sanitizeValue = (string, allowRegex) => {
-    const characterArray = string.split('');
-    return characterArray
-    .filter(character => character.match(allowRegex))
-    .join('');
-  };
-
   const onChangeWrapper = event => {
     if (event.target.value && props.allowCharacters) {
-      event.target.value = sanitizeValue(event.target.value, props.allowCharacters);
+      event.target.value = sanitizeValue(
+        event.target.value,
+        props.allowCharacters
+      );
     }
     props.onChange(event);
   };
@@ -75,6 +71,6 @@ InputComponent.propTypes = {
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
   maxLength: PropTypes.number,
-  allowCharacters: PropTypes.instanceOf(RegExp)
+  allowCharacters: PropTypes.instanceOf(RegExp),
 };
 export default InputComponent;
