@@ -2,14 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { sanitizeValue } from './common/inputField';
 const InputComponent = props => {
-  let errorMessage = '';
-  if (props.required || props.validationError) {
-    errorMessage = props.validationErrorMessage;
-  }
 
-  if (props.serverError) {
-    errorMessage = props.serverErrorMessage;
-  }
+  const errorMessage = () => {
+    let errMessage = '';
+    if (props.required || props.validationError) {
+      errMessage = props.validationErrorMessage;
+    }
+
+    if (props.serverError) {
+      errMessage = props.serverErrorMessage;
+    }
+    return errMessage;
+  };
 
   const onChangeWrapper = event => {
     if (event.target.value && props.allowCharacters) {
