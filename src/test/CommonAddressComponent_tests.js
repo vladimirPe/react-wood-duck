@@ -81,6 +81,13 @@ describe('Verify Common Address Fields Component', () => {
     zipCodeField.simulate('change', { target: { value: '95833' } });
     expect(onChangeSpy).toHaveBeenCalledWith('zip', '95833');
   });
+
+  it('allows only 5 numeric characters for mailing address zip on change ', () => {
+    let zipCodeField = commonAddressComponent.find('#Residentialzip').at(0);
+    zipCodeField.simulate('change', { target: { value: 'asd958334ccc' } });
+    expect(onChangeSpy).toHaveBeenCalledWith('zip', '95833');
+  });
+
   it('verify mailing Address city change', () => {
     let cityField = commonAddressComponent.find('#Residentialcity').at(0);
     cityField.simulate('change', { target: { value: 'Sacramento' } });

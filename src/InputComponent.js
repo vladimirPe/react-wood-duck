@@ -11,6 +11,20 @@ const InputComponent = props => {
     errorMessage = props.serverErrorMessage;
   }
 
+  const sanitizeValue = (string, allowRegex) => {
+    const characterArray = string.split('');
+    return characterArray
+    .filter(character => character.match(allowRegex))
+    .join('');
+  };
+
+  const onChangeWrapper = event => {
+    if (event.target.value && props.allowCharacters) {
+      event.target.value = sanitizeValue(event.target.value, props.allowCharacters);
+    }
+    props.onChange(event);
+  };
+
   return (
     <div className="form-group">
       <div
@@ -26,7 +40,7 @@ const InputComponent = props => {
             type={props.type}
             placeholder={props.placeholder}
             value={props.value}
-            onChange={props.onChange}
+            onChange={onChangeWrapper}
             disabled={props.disabled}
             maxLength={props.maxLength}
           />
@@ -61,5 +75,6 @@ InputComponent.propTypes = {
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
   maxLength: PropTypes.number,
+  allowCharacters: PropTypes.instanceOf(RegExp)
 };
 export default InputComponent;

@@ -74,6 +74,8 @@ export default class CommonAddressFields extends React.Component {
           placeholder=""
           type="text"
           onChange={event => this.props.onChange('zip', event.target.value)}
+          maxLength={5}
+          allowCharacters={/[0-9-]/}
         />
         <InputComponent
           gridClassName="col-md-4"

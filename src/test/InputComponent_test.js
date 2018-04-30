@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import './EnzymeSetup';
 
 describe('Input component', () => {
+  const onChange = jasmine.createSpy('onChange');
   const wrapper = shallow(<InputComponent />);
   const input = {
     id: '123ASD',
@@ -14,6 +15,7 @@ describe('Input component', () => {
     fieldClassName: 'field class name',
     placeholder: 'string ',
     value: 'enter the name',
+    onChange: onChange
   };
   const instance = wrapper.instance();
   wrapper.setProps(input);
@@ -72,5 +74,16 @@ describe('Input component', () => {
         .at(0)
         .props().value
     ).toEqual(input.value);
+  });
+
+  it('sanitizes the call to onChange when an allowCharacters pattern is given', () => {
+    wrapper.setProps({ allowCharacters: /[a-zA-Z\s-]/ });
+    const inputElement = wrapper.find('input');
+    inputElement.simulate('change', {
+      target: { value: 'hola mu-ndo239847%^#@$?' },
+    });
+    expect(onChange).toHaveBeenCalledWith({
+      target: { value: 'hola mu-ndo' },
+    });
   });
 });
