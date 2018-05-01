@@ -1,13 +1,7 @@
 import FormField from '../common/FormField';
 import PropTypes from 'prop-types';
 import React from 'react';
-
-const sanitizeValue = (string, allowRegex) => {
-  const characterArray = string.split('');
-  return characterArray
-    .filter(character => character.match(allowRegex))
-    .join('');
-};
+import { sanitizeValue } from "./FieldUtils";
 
 const InputField = ({
   errors,
@@ -82,5 +76,4 @@ InputField.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
-export { sanitizeValue };
 export default InputField;
