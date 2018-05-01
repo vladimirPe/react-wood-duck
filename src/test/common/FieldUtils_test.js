@@ -16,7 +16,7 @@ describe('Field utils', () => {
 
     it('Regex null', () => {
       expect(() => {
-        sanitizeValue('', null)
+        sanitizeValue('', null);
       }).toThrow(new Error('regex must not be null'));
     });
   });
