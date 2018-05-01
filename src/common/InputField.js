@@ -1,7 +1,7 @@
 import FormField from '../common/FormField';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { sanitizeValue } from "./FieldUtils";
+import { sanitizeValue } from './FieldUtils';
 
 const InputField = ({
   errors,

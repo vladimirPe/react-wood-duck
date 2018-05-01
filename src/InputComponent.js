@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { sanitizeValue } from "./common/FieldUtils";
+import { sanitizeValue } from './common/FieldUtils';
 
 const extractErrorMessage = props => {
   let errMessage = '';

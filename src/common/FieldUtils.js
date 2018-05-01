@@ -1,4 +1,3 @@
-
 const sanitizeValue = (string, allowRegex) => {
   if (allowRegex == null) throw new Error('regex must not be null');
   let sanitizedStr = '';
@@ -10,5 +9,4 @@ const sanitizeValue = (string, allowRegex) => {
   }
   return sanitizedStr;
 };
-
-export { sanitizeValue }
+export { sanitizeValue };
