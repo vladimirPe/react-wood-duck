@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { sanitizeValue } from './common/FieldUtils';
 
 const extractErrorMessage = props => {
-  let errMessage = '';
+  let errorMessage = '';
   if (props.required || props.validationError) {
-    errMessage = props.validationErrorMessage;
+    errorMessage = props.validationErrorMessage;
   }
 
   if (props.serverError) {
-    errMessage = props.serverErrorMessage;
+    errorMessage = props.serverErrorMessage;
   }
-  return errMessage;
+  return errorMessage;
 };
 
 const onChangeWrapper = (event, props) => {
